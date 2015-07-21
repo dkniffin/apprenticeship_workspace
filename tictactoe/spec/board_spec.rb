@@ -66,6 +66,21 @@ module TicTacToe
       end
     end
 
+    describe "set_coords" do
+      it "contains all sets of coordinates" do
+        expect(board.set_coords).to eq([ # rows
+                                        [[0,0],[0,1],[0,2]],
+                                        [[1,0],[1,1],[1,2]],
+                                        [[2,0],[2,1],[2,2]],
+                                        # cols
+                                        [[0,0],[1,0],[2,0]],
+                                        [[0,1],[1,1],[2,1]],
+                                        [[0,2],[1,2],[2,2]],
+                                        # diags
+                                        [[0,0],[1,1],[2,2]],
+                                        [[0,2],[1,1],[2,0]]])
+      end
+    end
 
 
     context "when 3x3 board" do

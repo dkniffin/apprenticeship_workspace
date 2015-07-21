@@ -49,5 +49,31 @@ module TicTacToe
     def empty?
       cell_coords.all? {|x,y| @data[x][y].nil? }
     end
+
+    def xs
+  		(0..(width-1))
+  	end
+
+  	def ys
+  		(0..(height-1))
+  	end
+
+    def rows
+  		xs.map{|x| ys.map{|y| [x,y]}}
+  	end
+
+    def cols
+  		ys.map{|y| xs.map{|x| [x,y]}}
+  	end
+
+    def diags
+  		# TODO: Change this to dynamic generation
+  		[[[0,0],[1,1],[2,2]],
+  		 [[0,2],[1,1],[2,0]]]
+  	end
+
+    def set_coords
+      rows + cols + diags
+    end
   end
 end
