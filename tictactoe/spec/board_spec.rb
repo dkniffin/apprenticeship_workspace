@@ -26,7 +26,7 @@ module TicTacToe
 
       describe ".move" do
         before { board.move(0,0,'X') }
-        it "adds the given token to the right location" do |variable|
+        it "adds the given token to the right location" do
           expect(board.data[0][0]).to eq('X')
         end
       end
