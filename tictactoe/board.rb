@@ -79,5 +79,18 @@ module TicTacToe
     def set_coords
       rows + cols + diags
     end
+
+    def sets
+      set_coords.map{|set| set.map{|x,y| @data[x][y]}}
+    end
+
+    def winner
+      sets.each do |set|
+        if set.uniq.length == 1 && set[0] != nil
+          return set[0]
+        end
+      end
+      nil
+    end
   end
 end

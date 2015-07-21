@@ -99,7 +99,7 @@ module TicTacToe
       end
     end
 
-    describe "set_coords" do
+    describe ".set_coords" do
       it "contains all sets of coordinates" do
         expect(board.set_coords).to eq([ # rows
                                         [[0,0],[0,1],[0,2]],
@@ -115,6 +115,45 @@ module TicTacToe
       end
     end
 
+    describe ".winner" do
+      context "when there's no winner" do
+        it "is nil" do
+          expect(board.winner).to eq(nil)
+        end
+      end
+      context "when someone has won" do
+        context "via horizontal" do
+          before do
+            board.move(0,0,'X')
+            board.move(0,1,'X')
+            board.move(0,2,'X')
+          end
+          it "is that token" do
+            expect(board.winner).to eq('X')
+          end
+        end
+        context "via vertical" do
+          before do
+            board.move(0,0,'O')
+            board.move(1,0,'O')
+            board.move(2,0,'O')
+          end
+          it "is that token" do
+            expect(board.winner).to eq('O')
+          end
+        end
+        context "via diagonal" do
+          before do
+            board.move(0,0,'X')
+            board.move(1,1,'X')
+            board.move(2,2,'X')
+          end
+          it "is that token" do
+            expect(board.winner).to eq('X')
+          end
+        end
+      end
+    end
 
     context "when 3x3 board" do
       subject(:board) { Board.new(3,3) }
