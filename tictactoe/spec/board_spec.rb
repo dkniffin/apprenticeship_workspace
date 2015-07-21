@@ -2,7 +2,7 @@ require_relative '../board'
 
 module TicTacToe
   describe Board do
-    context "default board" do
+    context "when default" do
       subject(:board) { Board.new }
 
       it "is empty" do
