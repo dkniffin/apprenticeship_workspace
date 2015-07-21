@@ -92,5 +92,9 @@ module TicTacToe
       end
       nil
     end
+
+    def end?
+      full? || winner != nil
+    end
   end
 end

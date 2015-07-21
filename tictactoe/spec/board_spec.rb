@@ -155,6 +155,42 @@ module TicTacToe
       end
     end
 
+    describe ".end?" do
+      context "when the board has no free moves" do
+        before do
+          board.move(0,0,'X')
+          board.move(0,1,'X')
+          board.move(0,2,'X')
+          board.move(1,0,'X')
+          board.move(1,1,'X')
+          board.move(1,2,'X')
+          board.move(2,0,'X')
+          board.move(2,1,'X')
+          board.move(2,2,'X')
+        end
+        it "is true" do
+          expect(board.end?).to eq(true)
+        end
+      end
+
+      context "when there's a winner" do
+        before do
+          board.move(0,0,'X')
+          board.move(1,1,'X')
+          board.move(2,2,'X')
+        end
+        it "is true" do
+          expect(board.end?).to eq(true)
+        end
+      end
+
+      context "when nobody has won, and there are move moves" do
+        it "is false" do
+          expect(board.end?).to eq(false)
+        end
+      end
+    end
+
     context "when 3x3 board" do
       subject(:board) { Board.new(3,3) }
 
