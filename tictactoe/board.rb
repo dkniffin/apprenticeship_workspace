@@ -45,5 +45,9 @@ module TicTacToe
     def free?(x,y)
       @data[x][y].nil?
     end
+
+    def empty?
+      cell_coords.all? {|x,y| @data[x][y].nil? }
+    end
   end
 end
