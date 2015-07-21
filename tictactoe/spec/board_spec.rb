@@ -7,8 +7,8 @@ module TicTacToe
 
       it "is empty" do
         expect(board.data).to eq([[nil,nil,nil],
-                                   [nil,nil,nil],
-                                   [nil,nil,nil]])
+                                  [nil,nil,nil],
+                                  [nil,nil,nil]])
       end
       it "is a 3x3" do
         expect(board.width).to eq(3)
