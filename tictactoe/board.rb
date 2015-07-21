@@ -50,6 +50,10 @@ module TicTacToe
       cell_coords.all? {|x,y| @data[x][y].nil? }
     end
 
+    def free_moves
+      cell_coords.select{|x,y| free?(x,y)}
+    end
+
     def full?
       cell_coords.none? {|x,y| @data[x][y].nil? }
     end
@@ -96,5 +100,9 @@ module TicTacToe
     def end?
       full? || winner != nil
     end
+
+    def pos_coords
+			[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0],[2,1],[2,2]]
+		end
   end
 end
