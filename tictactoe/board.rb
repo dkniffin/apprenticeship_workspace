@@ -30,6 +30,10 @@ module TicTacToe
       @data[x][y] = token
     end
 
+    def unmove(x,y)
+      @data[x][y] = nil
+    end
+
     def cell_coords
       @data.each_with_index.map do |row,i|
         row.each_with_index.map do |cell,j|

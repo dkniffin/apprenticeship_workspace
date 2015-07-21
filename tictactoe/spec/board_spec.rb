@@ -28,6 +28,16 @@ module TicTacToe
         end
       end
 
+      describe ".unmove" do
+        before do
+          board.move(0,0,'X')
+          board.unmove(0,0)
+        end
+        it "removes the token from the space" do
+          expect(board.data[0][0]).to eq(nil)
+        end
+      end
+
       describe ".free?" do
         context "when there is no token" do
           it "is true" do
