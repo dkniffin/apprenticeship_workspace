@@ -24,6 +24,14 @@ module TicTacToe
     context "when 3x3 board" do
       subject(:board) { Board.new(3,3) }
 
+      describe ".cell_coords" do
+        it "has all coordinates" do
+          expect(board.cell_coords).to eq([[0,0],[0,1],[0,2],
+                                           [1,0],[1,1],[1,2],
+                                           [2,0],[2,1],[2,2]])
+        end
+      end
+
       describe ".move" do
         before { board.move(0,0,'X') }
         it "adds the given token to the right location" do

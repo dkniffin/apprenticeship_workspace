@@ -29,5 +29,13 @@ module TicTacToe
     def move(x,y,token)
       @data[x][y] = token
     end
+
+    def cell_coords
+      @data.each_with_index.map do |row,i|
+        row.each_with_index.map do |cell,j|
+          [i,j]
+        end
+      end.reduce(:+)
+    end
   end
 end
