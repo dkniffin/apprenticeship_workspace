@@ -37,5 +37,9 @@ module TicTacToe
         end
       end.reduce(:+)
     end
+
+    def free?(x,y)
+      @data[x][y].nil?
+    end
   end
 end

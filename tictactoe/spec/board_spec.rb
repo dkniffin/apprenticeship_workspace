@@ -20,6 +20,28 @@ module TicTacToe
           expect(board.to_s).to eq("0 | 1 | 2\n---------\n3 | 4 | 5\n---------\n6 | 7 | 8")
         end
       end
+
+      describe ".move" do
+        before { board.move(0,0,'X') }
+        it "adds the given token to the right location" do
+          expect(board.data[0][0]).to eq('X')
+        end
+      end
+
+      describe ".free?" do
+        context "when there is no token" do
+          it "is true" do
+            expect(board.free?(0,0)).to eq(true)
+          end
+        end
+        context "when there is a token" do
+          before { board.move(0,0,'X') }
+          it "is false" do
+            expect(board.free?(0,0)).to eq(false)
+          end
+        end
+
+      end
     end
     context "when 3x3 board" do
       subject(:board) { Board.new(3,3) }
@@ -29,13 +51,6 @@ module TicTacToe
           expect(board.cell_coords).to eq([[0,0],[0,1],[0,2],
                                            [1,0],[1,1],[1,2],
                                            [2,0],[2,1],[2,2]])
-        end
-      end
-
-      describe ".move" do
-        before { board.move(0,0,'X') }
-        it "adds the given token to the right location" do
-          expect(board.data[0][0]).to eq('X')
         end
       end
     end
