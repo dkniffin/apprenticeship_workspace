@@ -9,6 +9,7 @@ module TicTacToe
     def width
       @data.length
     end
+
     def height
       @data[0].length
     end
@@ -23,6 +24,10 @@ module TicTacToe
 
     def to_s
       cells_with_numbers.map{|row| row.join(" | ")}.join("\n---------\n")
+    end
+
+    def move(x,y,token)
+      @data[x][y] = token
     end
   end
 end
