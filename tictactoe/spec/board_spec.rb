@@ -66,6 +66,39 @@ module TicTacToe
       end
     end
 
+    describe ".full?" do
+      context "when it's empty" do
+        it "is false" do
+          expect(board.full?).to eq(false)
+        end
+      end
+      context "when it has some free moves" do
+        before do
+          board.move(0,0,'X')
+          board.move(2,0,'X')
+        end
+        it "is false" do
+          expect(board.full?).to eq(false)
+        end
+      end
+      context "when it has no free moves" do
+        before do
+          board.move(0,0,'X')
+          board.move(0,1,'X')
+          board.move(0,2,'X')
+          board.move(1,0,'X')
+          board.move(1,1,'X')
+          board.move(1,2,'X')
+          board.move(2,0,'X')
+          board.move(2,1,'X')
+          board.move(2,2,'X')
+        end
+        it "is true" do
+          expect(board.full?).to eq(true)
+        end
+      end
+    end
+
     describe "set_coords" do
       it "contains all sets of coordinates" do
         expect(board.set_coords).to eq([ # rows

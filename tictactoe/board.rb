@@ -50,6 +50,10 @@ module TicTacToe
       cell_coords.all? {|x,y| @data[x][y].nil? }
     end
 
+    def full?
+      cell_coords.none? {|x,y| @data[x][y].nil? }
+    end
+
     def xs
   		(0..(width-1))
   	end
