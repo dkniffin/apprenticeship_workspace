@@ -75,9 +75,11 @@ module TicTacToe
   	end
 
     def diags
-  		# TODO: Change this to dynamic generation
-  		[[[0,0],[1,1],[2,2]],
-  		 [[0,2],[1,1],[2,0]]]
+      w = (width-1) # make the width zero based
+      diag_1 = (0..w).map { |x| [x,x] } # top-left to bottom-right
+      diag_2 = (0..w).map { |x| [x,w-x] } # top-right to bottom-right
+
+      [diag_1, diag_2]
   	end
 
     def set_coords
@@ -100,9 +102,5 @@ module TicTacToe
     def end?
       full? || winner != nil
     end
-
-    def pos_coords
-			[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0],[2,1],[2,2]]
-		end
   end
 end

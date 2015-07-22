@@ -191,14 +191,47 @@ module TicTacToe
       end
     end
 
-    context "when 3x3 board" do
+    context "on a 3x3 board" do
       subject(:board) { Board.new(3,3) }
+
+      it "is a 3x3" do
+        expect(board.width).to eq(3)
+        expect(board.height).to eq(3)
+      end
 
       describe ".cell_coords" do
         it "has all coordinates" do
           expect(board.cell_coords).to eq([[0,0],[0,1],[0,2],
                                            [1,0],[1,1],[1,2],
                                            [2,0],[2,1],[2,2]])
+        end
+      end
+      describe ".sets" do
+        it "has 8 winning sets" do
+          expect(board.sets.length).to eq(8)
+        end
+      end
+    end
+    context "on a 4x4 board" do
+      subject(:board) { Board.new(4,4) }
+
+      it "is a 4x4" do
+        expect(board.width).to eq(4)
+        expect(board.height).to eq(4)
+      end
+
+      describe ".cell_coords" do
+        it "has all coordinates" do
+          expect(board.cell_coords).to eq([[0,0],[0,1],[0,2],[0,3],
+                                           [1,0],[1,1],[1,2],[1,3],
+                                           [2,0],[2,1],[2,2],[2,3],
+                                           [3,0],[3,1],[3,2],[3,3]])
+        end
+      end
+      
+      describe ".sets" do
+        it "has 10 winning sets" do
+          expect(board.sets.length).to eq(10)
         end
       end
     end

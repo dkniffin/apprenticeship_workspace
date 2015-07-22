@@ -49,7 +49,7 @@ loop do
 		puts b
 		next
 	end
-	x,y = b.pos_coords[pos]
+	x,y = b.cell_coords[pos]
 
 	if b.free?(x,y)
 		b.move(x,y,playerToken)
