@@ -35,7 +35,9 @@ module TicTacToe
 			# TODO: In tic-tac-toe, many times a result can be determined before
 			# the end of the game. Computation time could be decreased if we do
 			# this before the very end
-			return heuristic(board) if board.end?
+			if board.end? || depth == 3
+				return heuristic(board)
+			end
 
 			move_score_pairs = []
 

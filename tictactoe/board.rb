@@ -15,15 +15,20 @@ module TicTacToe
     end
 
     def cells_with_numbers
+      cell_width = width == 3 ? 1 : 2
       @data.each_with_index.map do |row,i|
         row.each_with_index.map do |cell,j|
-          cell || i * width + j
+          value = (cell || (i * width + j))
+          value.to_s.rjust(cell_width, padstr=' ') # Pad it with spaces
         end
       end
     end
 
     def to_s
-      cells_with_numbers.map{|row| row.join(" | ")}.join("\n---------\n")
+      line_separator = "-----" * width
+      cells_with_numbers.map do |row|
+        row.join(" | ")
+      end.join("\n#{line_separator}\n")
     end
 
     def move(x,y,token)
@@ -101,6 +106,10 @@ module TicTacToe
 
     def end?
       full? || winner != nil
+    end
+
+    def max_pos_num
+      width * height - 1
     end
   end
 end

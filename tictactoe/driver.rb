@@ -16,8 +16,20 @@ while playerToken.nil?
   end
 end
 
+# Determine the board size
+size = nil
+while size.nil?
+  $stdout.print "What size board (3/4)? "
+  input = gets.chomp.to_i
+  if input == 3 || input == 4
+    size = input
+  else
+    puts "Invalid response."
+  end
+end
+
 # Set up the board
-b = TicTacToe::Board.new
+b = TicTacToe::Board.new(size,size)
 
 # Set up the AI
 aiToken = (playerToken == 'X') ? 'O' : 'X'
@@ -44,8 +56,8 @@ loop do
   input = gets.chomp # Get user input
 
 	pos = input.to_i
-	if ! pos.between?(0,8)
-		puts "Invalid input. Input should be a number 0-8."
+	if ! pos.between?(0,b.max_pos_num)
+		puts "Invalid input. Input should be a number 0-#{b.max_pos_num}."
 		puts b
 		next
 	end
