@@ -228,7 +228,7 @@ module TicTacToe
                                            [3,0],[3,1],[3,2],[3,3]])
         end
       end
-      
+
       describe ".sets" do
         it "has 10 winning sets" do
           expect(board.sets.length).to eq(10)
