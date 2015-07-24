@@ -10,10 +10,25 @@ class Converter
 	end
 
 	def digit_to_numeral(digit,pos)
-		pos_2_chars = [['I','V','X'],['X','L','C'],['C','D','M']]
+		pos_2_chars = [
+			['I','V','X'],
+			['X','L','C'],
+			['C','D','M']
+		]
 		char_set = pos_2_chars[pos]
 
-		numeral_pattern_map = [[],[0],[0,0],[0,0,0],[0,1],[1],[1,0],[1,0,0],[1,0,0,0],[0,2]]
+		numeral_pattern_map = [
+			[],        # 0
+			[0],       # 1
+			[0,0],     # 2
+			[0,0,0],   # 3
+			[0,1],     # 4
+			[1],       # 5
+			[1,0],     # 6
+			[1,0,0],   # 7
+			[1,0,0,0], # 8
+			[0,2]      # 9
+		]
 		numeral_pattern = numeral_pattern_map[digit]
 
     numeral_pattern.map {|numeral_num| char_set[numeral_num] }.join
