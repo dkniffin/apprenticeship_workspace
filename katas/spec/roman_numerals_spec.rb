@@ -1,7 +1,7 @@
-require_relative '../roman_numerals'
+require_relative '../roman_numeral_subtraction'
 
 describe ".romanize" do
-	subject(:converter) { Converter.new }
+	subject(:converter) { Kata.new }
 
 	it "converts 1000 to M" do
 		expect(converter.romanize(1000)).to eq("M")
