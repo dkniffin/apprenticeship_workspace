@@ -1,5 +1,4 @@
-# require_relative '../coin_changer.rb'
-require_relative '../coin_changer_divmod.rb'
+require_relative '../coin_changer'
 
 describe "make_change" do
   let(:coin_changer) { CoinChanger.new }
