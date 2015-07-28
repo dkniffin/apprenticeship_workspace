@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+todos = Todo.create([
+  { title: 'Some Title 1', is_completed: true },
+  { title: 'Some Title 2', is_completed: true },
+  { title: 'Some Title 3', is_completed: false }
+  ])
