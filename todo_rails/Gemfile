@@ -7,11 +7,15 @@ gem 'rails-api'
 
 # Offer serialized json data back to the client
 gem 'active_model_serializers', github: 'rails-api/active_model_serializers', branch: '0-9-stable'
+gem 'responders'
+
 
 # postgresql
 gem 'pg'
 
 group :development, :test do
+  gem 'pry-rails'
+
   # Rspec
   gem 'rspec-rails'
 
