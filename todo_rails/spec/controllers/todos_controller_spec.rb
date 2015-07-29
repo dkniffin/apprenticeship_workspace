@@ -66,12 +66,17 @@ RSpec.describe TodosController, type: :controller do
   end
   describe "DELETE /todos/:id" do
     context "when the id is valid" do
-      it "deletes the todo"
-      it "sends an empty response"
-    end
-    context "when the id is invalid" do
-      it "doesn't delete any todos"
-      it "responds with an error"
+      let(:todo) { create(:todo) }
+      it "deletes the todo" do
+        todo
+        expect{ delete :destroy, id: todo.id, format: :json
+        }.to change { Todo.count }.by(-1)
+      end
+      it "sends an empty response" do
+        todo
+        delete :destroy, id: todo.id, format: :json
+        expect(response).to have_http_status(:no_content)
+      end
     end
   end
 end
