@@ -3,8 +3,7 @@ class RomanNumeral
     romanize_divmod(number)
   end
 
-
-  def romanize_divmod(number)
+  def roman_map
     roman_map = {
       1000 => 'M',
       900  => 'CM',
@@ -20,6 +19,23 @@ class RomanNumeral
       4    => 'IV',
       1    => 'I'
     }
+  end
+  def inverted_roman_map
+    roman_map.invert
+  end
+
+  def unromanize(numeral)
+    number = 0
+    sorted_numerals = inverted_roman_map.keys.sort_by(&:length).reverse
+    sorted_numerals.each do |key|
+      numeral.gsub!(key) do |match|
+        number += inverted_roman_map[key]
+      end
+    end
+    number
+  end
+
+  def romanize_divmod(number)
     string = ""
     roman_map.keys.each do |divider|
       quotient,remainder = number.divmod(divider)
@@ -30,21 +46,6 @@ class RomanNumeral
   end
 
   def romanize_largest_key(number)
-    roman_map = {
-      1000 => 'M',
-      900  => 'CM',
-      500  => 'D',
-      400  => 'CD',
-      100  => 'C',
-      90   => 'XC',
-      50   => 'L',
-      40   => 'XL',
-      10   => 'X',
-      9    => 'IX',
-      5    => 'V',
-      4    => 'IV',
-      1    => 'I'
-    }
     string = ""
     while number > 0
       largest_key = roman_map.keys.select {|num| num <= number }.max
@@ -86,4 +87,5 @@ class RomanNumeral
 
     numeral_pattern.map {|numeral_num| char_set[numeral_num] }.join
 	end
+
 end
