@@ -88,23 +88,26 @@ describe RomanNumeral do
 		end
 	end
 
-	# describe ".roman_math" do
-	# 	subject(:converter) { RomanNumeral.new }
-	#
-	# 	it "converts X + X to 20" do
-	# 		expect(converter.roman_math("X + X")).to eq(20)
-	# 	end
-	# 	it "converts X + X * IV to 40" do
-	# 		expect(converter.roman_math("X + X * IV")).to eq(40)
-	# 	end
-	# 	it "converts X + X * IV - III to 47" do
-	# 		expect(converter.roman_math("X + X * IV - III")).to eq(47)
-	# 	end
-	# 	it "converts X * X / II to 50" do
-	# 		expect(converter.roman_math("X * X / II")).to eq(50)
-	# 	end
-	# 	it "converts L / V to 10" do
-	# 		expect(converter.roman_math("L / V")).to eq(10)
-	# 	end
-	# end
+	describe ".roman_math" do
+		subject(:converter) { RomanNumeral.new }
+
+		it "converts X + X to 20" do
+			expect(converter.roman_math("X + X")).to eq(20)
+		end
+		it "converts X + X * IV to 40" do
+			expect(converter.roman_math("X + X * IV")).to eq(50)
+		end
+		it "converts X + X * IV - III to 47" do
+			expect(converter.roman_math("X + X * IV - III")).to eq(47)
+		end
+		it "converts X * X / II to 50" do
+			expect(converter.roman_math("X * X / II")).to eq(50)
+		end
+		it "converts X * X * II to 200" do
+			expect(converter.roman_math("X * X * II")).to eq(200)
+		end
+		it "converts L / V to 10" do
+			expect(converter.roman_math("L / V")).to eq(10)
+		end
+	end
 end

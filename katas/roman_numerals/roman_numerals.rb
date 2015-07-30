@@ -1,6 +1,47 @@
+require 'pp'
+require 'byebug'
+
 class RomanNumeral
   def romanize(number)
     romanize_divmod(number)
+  end
+
+  def roman_math(equation)
+    operators = ["*",'/','-','+']
+    operators_re = Regexp.new(/(\*|\/|\-|\+)/)
+    parts = equation.split(operators_re).map(&:strip)
+
+    parts_dec = parts.map do |part|
+      operators.include?(part) ? part : unromanize(part)
+    end
+
+    solve(parts_dec)
+  end
+
+  def solve(parts,on_mul_div_loop=true)
+    return parts[0] if parts.length == 1 # Base case: Return the answer
+
+    while parts.length != 1
+      if on_mul_div_loop && (parts[1] == '/' || parts[1] == '*')
+        first, op, second = parts.slice!(0,3)
+
+        parts.unshift(operate(first,op,second))
+      end
+    end
+    solve(parts,false)
+  end
+
+  def operate(first,op,second)
+    case op
+    when '*'
+      first * second
+    when '/'
+      first / second
+    when '-'
+      first - second
+    when '+'
+      first + second
+    end
   end
 
   def roman_map
